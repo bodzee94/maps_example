@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Geolocation</title>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWQpvEHCPD9e0zV-M2S2U4JJOC48PSQvs"></script>
+</head>
+<body>
+  <h4>Getting Location...</h4>
+  <span class="latitude"></span>
+  <span class="longitute"></span>
+
+  <script>
+    (function() {
+      var lat = document.querySelector('.latitude');
+      var lng = document.querySelector('.longitude');
+      var heading = document.querySelector('h4');
+
+      // use the browser's geolocation object to get our position
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition)
+        } else {
+          console.log('she dont work');
+        }
+      }
+
+      function showPosition(position) {
+        heading.innerHTML = "Got location!";
+        lat.innerHTML = "Latitude: " + position.coords.latitude;
+        lng.innerHTML = "Longitude: " + position.coords.longitude;
+      }
+
+      getLocation();
+    })();
+  </script>
+
+</body>
+</html>
